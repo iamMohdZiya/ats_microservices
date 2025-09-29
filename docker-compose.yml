@@ -1,0 +1,27 @@
+services:
+  mongo:
+    image: mongo:5
+    container_name: mongo_db
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  applicant_service:
+    build:
+      context: ./services/applicant
+    ports:
+      - "4001:4001"
+    depends_on:
+      - mongo
+
+  job_service:
+    build:
+      context: ./services/job
+    ports:
+      - "4002:4002"
+    depends_on:
+      - mongo
+
+volumes:
+  mongo_data:
