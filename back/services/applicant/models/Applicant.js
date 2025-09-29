@@ -5,8 +5,7 @@ const applicantSchema = new mongoose.Schema({
     skills: [{ type: String, required: true }],
     experience: { type: Number, required: true },
     appliedFor: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "JobDescription",
+        type: String,
         required: true
     },
     status: {
